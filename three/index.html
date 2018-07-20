@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>How does it work?</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../highlight/styles/default.css">
+    <link rel="stylesheet" href="../highlight/styles/atom-one-light.css">
+    <script src="../highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<main class="flex flex-center" id="slidesContainer">
+    <section class="center slide">
+        <h1>How does it work?</h1>
+    </section>
+    <!--1-->
+    <section class="slide" style="display: none">
+        <p>GraphQL query example</p>
+        <pre class="codeSample flex flex-center" style="width: 100%">
+<code class="hljs graphql">
+<span class="query">query</span> Matches {
+    <span class="hljs-attribute">matches</span> {
+        movieId
+    }
+}
+</code>
+         </pre>
+    </section>
+    <section class="slide" style="display: none">
+        <p>GraphQL query example</p>
+        <pre class="codeSample flex flex-center" style="width: 100%">
+<code class="hljs graphql">
+<span class="query">query</span> Matches {
+    <span class="hljs-attribute">matches</span> {
+        movieId
+    }
+}
+
+</code>
+<code class="hljs js">
+    {"data":{
+        "matches":[
+            {"movieId":"42.mov"},
+            ...
+        ]
+    }}
+</code>
+         </pre>
+    </section>
+    <!--2-->
+    <section class="center slide" style="display: none">
+        <h1>Schema</h1>
+    </section>
+    <section class="slide" style="display: none">
+        <p>Schema</p>
+        <pre class="codeSample flex flex-center" style="width: 100%">
+<code class="hljs">
+type Query {
+    matches: [Match!]!
+}
+type Match {
+    <span class="hljs-attribute">movieId</span>: String
+    <span class="hljs-attribute">start</span>: Int
+    <span class="hljs-attribute">end</span>: Int
+}
+</code>
+         </pre>
+    </section>
+    <section class="center slide" style="display: none">
+        <h1>AST</h1>
+        <h2>Abstract Syntactic Tree</h2>
+    </section>
+    <!--3-->
+    <section class="center slide" style="display: none">
+        <h1>Lexer</h1>
+    </section>
+    <!--4-->
+    <section class="slide" style="display: none">
+        <p>Token</p>
+        <pre class="codeSample flex flex-center" style="width: 100%">
+<code class="hljs">
+// Each kind of token.
+// ...
+const COLON = ':';
+const EQUALS = '=';
+const BRACKET_L = '[';
+const BRACKET_R = ']';
+const BRACE_L = '{';
+const BRACE_R = '}';
+const NAME = 'Name';
+const INT = 'Int';
+const FLOAT = 'Float';
+const STRING = 'String';
+const COMMENT = 'Comment';
+</code>
+         </pre>
+    </section>
+    <!--5-->
+    <section class="center slide" style="display: none">
+        <h1>Parser</h1>
+    </section>
+    <!--6-->
+    <section class="slide" style="display: none">
+        <ul class="tree heading1">
+            <li>
+                OperationDefinition
+            </li>
+            <li>
+                Name: <code class="hljs-attribute">Matches</code>
+                <ul class="tree">
+                    <li>
+                        SelectionSet
+                    </li>
+                    <li>
+                        Field: <code class="hljs-attribute">matches</code>
+                        <ul class="tree">
+                            <li>
+                                SelectionSet
+                            </li>
+                            <li>
+                                Field: <code class="hljs-attribute">movieId</code>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <!--7-->
+    <section class="center slide" style="display: none">
+        <h1>Validation</h1>
+    </section>
+    <section class="slide" style="display: none">
+        <ul class="tree heading1 valid">
+            <li>
+                OperationDefinition
+            </li>
+            <li>
+                Name: <code class="hljs-attribute">Matches</code>
+                <ul class="tree">
+                    <li>
+                        SelectionSet
+                    </li>
+                    <li>
+                        Field: <code class="hljs-attribute">matches</code>
+                        <ul class="tree">
+                            <li>
+                                SelectionSet
+                            </li>
+                            <li>
+                                Field: <code class="hljs-attribute">movieId</code>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <!--8-->
+    <section class="center slide" style="display: none">
+        <h1>Resolution</h1>
+    </section>
+    <!--9-->
+    <section class="slide" style="display: none">
+        <p>GraphQL resolver example</p>
+        <pre class="codeSample flex flex-center" style="width: 100%">
+<code class="hljs js">
+{
+    matches: (args, context, info) => {
+        return context.db.collection('matches').find();
+    }
+}
+</code>
+         </pre>
+    </section>
+    <section class="slide" style="display: none">
+        <p>GraphQL client request</p>
+        <pre class="codeSample flex flex-center" style="width: 100%">
+<code class="hljs js">
+fetch('/graphql', {
+  <span>...</span>
+  body: `{<span class="query">query</span> Matches {
+    <span class="hljs-attribute">matches</span> {
+        movieId
+    }
+}}`)
+}).then(✨);
+</code>
+         </pre>
+    </section>
+<!--11-->
+    <section class="slide" style="display: none">
+        <p>GraphQL query example</p>
+        <pre class="codeSample flex flex-center" style="width: 100%">
+<code class="hljs js">
+    {"data":{
+        "matches":[
+            {"movieId":"42.mov"},
+            ...
+        ]
+    }}
+</code>
+         </pre>
+    </section>
+    <aside id="notes" style="display: none">
+
+    </aside>
+</main>
+<a href="../four/index.html" id="next"></a>
+<script src="../index.js"></script>
+</body>
+</html>

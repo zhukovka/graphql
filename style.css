@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+
+html {
+    font-size: 22px;
+}
+
+body {
+    margin: 0;
+}
+
+canvas.audio {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(76, 76, 26, 1) 0, #1b2f0e 0, rgba(0, 0, 0, 1) 100%);
+}
+
+h1, h2, h3, h3, h4 {
+    font-family: 'Fjalla One', sans-serif;
+}
+
+h1 {
+    font-size: 20vh;
+    margin: 10px 0;
+}
+h1.math {
+    font-size: 15vh;
+    margin: 10px 0;
+}
+
+.heading1 {
+    font-size: 8vh;
+    margin: 10px 0;
+}
+
+main {
+    height: 100vh;
+}
+
+.center {
+    text-align: center;
+}
+
+.full {
+    width: 100%;
+    height: 100vh;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    align-items: center;
+    justify-content: center;
+}
+.flex-baseline {
+    align-items: baseline;
+}
+
+.canvasContainer, .codeContainer {
+    height: 100vh;
+    position: relative;
+    overflow: hidden
+}
+
+.codeSample {
+    width: 80%;
+    font-size: 5vh;
+}
+
+.pink {
+    color: #EC0C8E;
+}
+
+.blue{
+    color: #2c009f;
+    font-weight: bold;
+}
+
+.highlight {
+    background: #fff000;
+}
+
+section img {
+    width: 100%;
+    height: auto;
+}
+
+.video {
+    background: black;
+}
+
+@-webkit-keyframes stop {
+    70% {
+        border-radius: 6px;
+        width: 60px;
+        height: 60px;
+    }
+    100% {
+        border-radius: 6px;
+        width: 64px;
+        height: 64px;
+    }
+}
+
+@-moz-keyframes stop {
+    70% {
+        border-radius: 6px;
+        width: 60px;
+        height: 60px;
+    }
+    100% {
+        border-radius: 6px;
+        width: 64px;
+        height: 64px;
+    }
+}
+
+@-o-keyframes stop {
+    70% {
+        border-radius: 6px;
+        width: 60px;
+        height: 60px;
+    }
+    100% {
+        border-radius: 6px;
+        width: 64px;
+        height: 64px;
+    }
+}
+
+@keyframes stop {
+    70% {
+        border-radius: 6px;
+        width: 60px;
+        height: 60px;
+    }
+    100% {
+        border-radius: 6px;
+        width: 64px;
+        height: 64px;
+    }
+}
+
+body .container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-top: 6px;
+}
+
+body .container #btn {
+    display: none;
+}
+
+#btn + label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body .container #btn + label:before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: '';
+    border-radius: 50%;
+    border: 6px solid #fff;
+    cursor: pointer;
+}
+
+body .container #btn + label:after {
+    width: 80%;
+    height: 80%;
+    content: '';
+    border-radius: 50%;
+    background: #e80415;
+    cursor: pointer;
+}
+
+body .container #btn:checked + label:after {
+    -webkit-animation: stop 0.5s infinite cubic-bezier(0.4, -0.9, 0.9, 1);
+    -moz-animation: stop 0.5s infinite cubic-bezier(0.4, -0.9, 0.9, 1);
+    -o-animation: stop 0.5s infinite cubic-bezier(0.4, -0.9, 0.9, 1);
+    animation: stop 0.5s infinite cubic-bezier(0.4, -0.9, 0.9, 1);
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+body .container #btn:checked ~ .time {
+    -webkit-animation: time 0.3s infinite linear;
+    -moz-animation: time 0.3s infinite linear;
+    -o-animation: time 0.3s infinite linear;
+    animation: time 0.3s infinite linear;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    animation-delay: 0.3s;
+}
+
+body .container #btn:checked ~ .time .h_m:after {
+    -webkit-animation: to_24 86400s infinite linear;
+    -moz-animation: to_24 86400s infinite linear;
+    -o-animation: to_24 86400s infinite linear;
+    animation: to_24 86400s infinite linear;
+    -webkit-animation-delay: 1800s;
+    animation-delay: 1800s;
+}
+
+body .container #btn:checked ~ .time .h_m:before {
+    -webkit-animation: to_60 3600s infinite linear;
+    -moz-animation: to_60 3600s infinite linear;
+    -o-animation: to_60 3600s infinite linear;
+    animation: to_60 3600s infinite linear;
+    -webkit-animation-delay: 30s;
+    animation-delay: 30s;
+}
+
+body .container #btn:checked ~ .time .s_ms:before {
+    -webkit-animation: to_60 60s infinite linear;
+    -moz-animation: to_60 60s infinite linear;
+    -o-animation: to_60 60s infinite linear;
+    animation: to_60 60s infinite linear;
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+}
+
+body .container #btn:checked ~ .time .s_ms:after {
+    -webkit-animation: to_100 1s infinite linear;
+    -moz-animation: to_100 1s infinite linear;
+    -o-animation: to_100 1s infinite linear;
+    animation: to_100 1s infinite linear;
+}
+
+body .container .time {
+    position: absolute;
+    width: 100%;
+    top: 110%;
+    opacity: 0;
+}
+
+body .container .time > * {
+    display: inline-block;
+    width: 50%;
+    margin: -2px;
+    color: #a2a2a2;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 1.3em;
+}
+
+body .container .time .h_m:after {
+    float: right;
+    position: relative;
+    content: "00";
+}
+
+body .container .time .h_m:before {
+    float: right;
+    position: relative;
+    content: ":00";
+}
+
+body .container .time .s_ms:before {
+    float: left;
+    position: relative;
+    content: ":00";
+}
+
+body .container .time .s_ms:after {
+    float: left;
+    position: relative;
+    content: ":00";
+}
+
+.value {
+    text-align: center;
+    font-weight: bold;
+    font-size: 5vw;
+    /*line-height: 60px;*/
+    margin: 20px 0;
+    letter-spacing: -.07em;
+}
+
+.value {
+    /*width: 300px;*/
+    /*height: 100px;*/
+    border-bottom: 4px dashed #bdc3c7;
+    /*text-shadow: white 2px 2px 2px;*/
+}
+
+input[type="range"] {
+    display: block;
+    -webkit-appearance: none;
+    background-color: #bdc3c7;
+    /*width: 300px;*/
+    height: 5px;
+    border-radius: 5px;
+    margin: 0 auto;
+    outline: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #e74c3c;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+​
+input[type="range"]::-webkit-slider-thumb:hover {
+    background-color: white;
+    border: 2px solid #e74c3c;
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1.6);
+}
+
+#notes{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 20vw;
+}
+
+.hljs.graphql .query{
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.tree {
+    list-style: none;
+    line-height: 1.5;
+}
+
+.tree>li:first-child:before {
+    content: '🌿';
+}
+.tree.valid li:before {
+    content: '✅';
+}
+
